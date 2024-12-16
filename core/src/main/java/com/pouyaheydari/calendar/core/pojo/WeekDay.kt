@@ -3,14 +3,17 @@ package com.pouyaheydari.calendar.core.pojo
 import android.content.Context
 import com.pouyaheydari.calendar.core.R
 
-enum class WeekDay(val weekDayNumber: Int, val distanceFromFirstDayOfWeek: Int) {
-    Monday(0, 2),
-    Tuesday(1, 3),
-    Wednesday(2, 4),
-    Thursday(3, 5),
-    Friday(4, 6),
-    Saturday(5, 0),
-    Sunday(6, 1);
+enum class WeekDay {
+    Monday,
+    Tuesday,
+    Wednesday,
+    Thursday,
+    Friday,
+    Saturday,
+    Sunday;
+
+    val weekDayNumber: Int get() = this.ordinal
+    val distanceFromFirstDayOfWeek: Int get() = (this.ordinal + 2) % 7
 
     fun getName(context: Context): String = when (weekDayNumber) {
         Monday.weekDayNumber -> context.getString(R.string.monday)
